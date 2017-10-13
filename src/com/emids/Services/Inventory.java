@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Inventory {
 	Scanner scanner = new Scanner(System.in);
+	Product product = new Product();
 
 	public void search() {
 		int choice;
@@ -25,12 +26,24 @@ public class Inventory {
 	}
 
 	public String searchByName(String bookName) {
-		// if(bookName.equalsIgnoreCase()
-		return bookName;
+		for (int i = 0; i < product.bookcontainer.size(); i++) {
+			if (bookName.equalsIgnoreCase(product.book[i].getBookName()))
+				System.out.println("book found");
+			else
+				System.out.println("book not found.!");
+		}
+		return "sorry. " + bookName + " book is not available";
 	}
 
 	public String searchByAuthorName(String authorName) {
-		return authorName;
+		for (int i = 0; i < product.bookcontainer.size(); i++) {
+			if (authorName.equalsIgnoreCase(product.book[i].getBookAuthorName()))
+				System.out.println("book found");
+			else
+				System.out.println("book by not found.!");
+		}
+		return "sorry.Book by " + authorName + " name is not available.";
+
 	}
 
 }

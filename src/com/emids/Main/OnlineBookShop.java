@@ -1,7 +1,6 @@
 package com.emids.Main;
 
 import java.util.Scanner;
-
 import com.emids.Services.Inventory;
 import com.emids.Services.Product;
 
@@ -17,21 +16,25 @@ public class OnlineBookShop {
 			switch (choice) {
 			case 1:
 				product.viewProduct();
+				System.out.println();
 				break;
 			case 2:
-				product.buyProduct(Product.bookcontainer);
+				product.buyProduct(product.bookcontainer);
+				System.out.println();
 				break;
 			case 3:
-				product.addProduct(Product.bookcontainer);
+				product.addProduct(product.bookcontainer);
+				System.out.println();
 				break;
 			case 4:
 				inventory.search();
+				System.out.println();
 				break;
 			case 5:
-				System.out.println("closing online book shop");
+				System.out.println("closing online book shop\n");
 				break;
 			default:
-				System.out.println("invalid option. please try again.");
+				System.out.println("invalid option. please try again.\n");
 			}
 		} while (choice != 5);
 		System.exit(0);
