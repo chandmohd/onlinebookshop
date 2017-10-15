@@ -1,13 +1,12 @@
 package com.emids.Main;
 
 import java.util.Scanner;
+
 import com.emids.Services.Inventory;
-import com.emids.Services.Product;
 
 public class OnlineBookShop {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		Product product = new Product();
 		Inventory inventory = new Inventory();
 		int choice;
 		do {
@@ -15,15 +14,7 @@ public class OnlineBookShop {
 			choice = scanner.nextInt();
 			switch (choice) {
 			case 1:
-				product.viewProduct();
-				System.out.println();
-				break;
-			case 2:
-				product.buyProduct(product.bookcontainer);
-				System.out.println();
-				break;
-			case 3:
-				product.addProduct(product.bookcontainer);
+				inventory.viewBooks();
 				System.out.println();
 				break;
 			case 4:
@@ -35,6 +26,7 @@ public class OnlineBookShop {
 				break;
 			default:
 				System.out.println("invalid option. please try again.\n");
+				break;
 			}
 		} while (choice != 5);
 		System.exit(0);

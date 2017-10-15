@@ -1,10 +1,13 @@
 package com.emids.Services;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
-public class Inventory {
+import com.emids.Domain.Books;
+
+public class Inventory extends Product {
 	Scanner scanner = new Scanner(System.in);
-	Product product = new Product();
+	Iterator<Books> iterator = listOfBooks.iterator();
 
 	public void search() {
 		int choice;
@@ -14,35 +17,41 @@ public class Inventory {
 		switch (choice) {
 		case 1:
 			System.out.println("enter the book name");
-			System.out.println(searchByName(scanner.next()));
+			searchByName(scanner.next());
 			break;
 		case 2:
 			System.out.println("enter the author name");
-			System.out.println(searchByAuthorName(scanner.next()));
+			searchByAuthorName(scanner.next());
 			break;
 		default:
 			System.out.println("Invalid option. please try again.");
+			break;
 		}
 	}
 
-	public String searchByName(String bookName) {
-		for (int i = 0; i < product.bookcontainer.size(); i++) {
-			if (bookName.equalsIgnoreCase(product.book[i].getBookName()))
-				System.out.println("book found");
+	public void searchByName(String bookName) {
+		while (iterator.hasNext()) {
+			if (bookName.equalsIgnoreCase(iterator.next().getBookName()))
+				System.out.println(bookName + " is Availabe");
 			else
-				System.out.println("book not found.!");
+				System.out.println(bookName + "is not Available");
 		}
-		return "sorry. " + bookName + " book is not available";
+
 	}
 
-	public String searchByAuthorName(String authorName) {
-		for (int i = 0; i < product.bookcontainer.size(); i++) {
-			if (authorName.equalsIgnoreCase(product.book[i].getBookAuthorName()))
-				System.out.println("book found");
+	public void searchByAuthorName(String authorName) {
+		while (iterator.hasNext()) {
+			if (authorName.equalsIgnoreCase(iterator.next().getBookAuthorName()))
+				System.out.println("book by " + authorName + " is Availabe.");
 			else
-				System.out.println("book by not found.!");
+				System.out.println("book by " + authorName + " is not Availabe.");
 		}
-		return "sorry.Book by " + authorName + " name is not available.";
+	}
+
+	public static void showBookDetails(Books book) {
+		System.out.println("book details");
+		System.out.println("book name: " + book.getBookName() + "book author: " + book.getBookAuthorName()
+				+ " book price: " + book.getBookPrice());
 
 	}
 

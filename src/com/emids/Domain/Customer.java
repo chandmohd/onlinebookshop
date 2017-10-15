@@ -5,8 +5,8 @@ public class Customer {
 	private String address;
 	private String state;
 	private String city;
-	private String zip;
-	private String number;
+	private long zip;
+	private long number;
 
 	// default constructor
 	public Customer() {
@@ -14,7 +14,7 @@ public class Customer {
 	}
 
 	// parameterize constructor
-	public Customer(String name, String address, String state, String city, String zip, String number) {
+	public Customer(String name, String address, String state, String city, long zip, long number) {
 		this.name = name;
 		this.address = address;
 		this.state = state;
@@ -56,19 +56,19 @@ public class Customer {
 		this.city = city;
 	}
 
-	public String getZip() {
+	public long getZip() {
 		return zip;
 	}
 
-	public void setZip(String zip) {
+	public void setZip(long zip) {
 		this.zip = zip;
 	}
 
-	public String getNumber() {
+	public long getNumber() {
 		return number;
 	}
 
-	public void setNumber(String number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}
 
