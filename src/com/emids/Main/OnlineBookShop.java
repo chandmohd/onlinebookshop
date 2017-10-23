@@ -4,10 +4,11 @@ import java.util.Scanner;
 
 import com.emids.Services.Admin;
 import com.emids.Services.Inventory;
+import com.emids.Services.Product;
 
 public class OnlineBookShop {
+	static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		Inventory inventory = new Inventory();
 		int choice;
 		do {
@@ -20,6 +21,7 @@ public class OnlineBookShop {
 				break;
 			case 2:
 					new Admin().verifyAdmin();
+					adminTask();
 			case 4:
 				inventory.search();
 				System.out.println();
@@ -33,6 +35,17 @@ public class OnlineBookShop {
 			}
 		} while (choice != 5);
 		System.exit(0);
+	}
+
+	private static void adminTask() {
+		System.out.println("Enter 1 to viewBooks\nEnter 2 to add book\nEnter 3 to remove book\nEnter 4 to editBooks");
+		int choice=scanner.nextInt();
+		switch(choice)
+		{
+		case 1:
+				Product.getBook(Product.listOfBooks);
+				break;
+		}
 	}
 
 	public static void displayMenu() {

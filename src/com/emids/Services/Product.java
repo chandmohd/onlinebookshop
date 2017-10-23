@@ -11,7 +11,7 @@ import com.emids.Domain.Books;
 public class Product {
 	static Scanner productScanner = new Scanner(System.in);
 	Product product = new Product();
-	static List<Books> listOfBooks = new ArrayList<Books>();
+	public static List<Books> listOfBooks = new ArrayList<Books>();
 
 	public static void viewBooks() {
 		System.out.println("there are the books we have...");
