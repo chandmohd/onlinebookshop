@@ -9,7 +9,7 @@ import java.util.Scanner;
 import com.emids.Domain.Books;
 
 public class Product {
-	Scanner productScanner = new Scanner(System.in);
+	static Scanner productScanner = new Scanner(System.in);
 	Product product = new Product();
 	static List<Books> listOfBooks = new ArrayList<Books>();
 
@@ -19,14 +19,34 @@ public class Product {
 
 	}
 
-	public static List<Books> addProduct() {
-		Books book1 = new Books("java", "games gosling", 200.56);
-		Books book2 = new Books("c", "dennis ritchie", 300.56);
-		Books book3 = new Books("c++", "Bjarne Stroustrup", 250.56);
-		Books book4 = new Books("javaScript", "Brendan Eich", 209.56);
-		Books book5 = new Books("Sql", "Donald D. Chamberlin", 249.56);
-		Collections.addAll(listOfBooks, book1, book2, book3, book4, book5);
-		return listOfBooks;
+	public static void addProduct() {
+		Books book1 = new Books("java", "games", 200.56);
+		Books book2 = new Books("c", "dennis", 300.56);
+		Books book3 = new Books("c++", "Bjarne", 250.56);
+		Books book4 = new Books("javaScript", "Brendan", 209.56);
+		Books book5 = new Books("Sql", "Donald", 249.56);
+		listOfBooks.add(book1);
+		listOfBooks.add(book2);
+		listOfBooks.add(book3);
+		listOfBooks.add(book4);
+		listOfBooks.add(book5);
+	}
+	public static void addBook(Books book)
+	{
+		listOfBooks.add(book);
+		System.out.println("book added succesfully\n");
+		Product.getBook(Product.listOfBooks);
+	}
+	public static void getBook(List<Books>list)
+	{
+		for(int i=0;i<listOfBooks.size();i++)
+			System.out.println(listOfBooks.get(i));
+	}
+	public void remove(Books book)
+	{
+		listOfBooks.remove(book);
+		System.out.println("book removed succesfully\n");
+		Product.getBook(Product.listOfBooks);
 	}
 
 	public void editBooksDetails() {
