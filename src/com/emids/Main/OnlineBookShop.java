@@ -3,48 +3,51 @@ package com.emids.Main;
 import java.util.Scanner;
 
 import com.emids.Services.Admin;
+import com.emids.Services.BookShelf;
 import com.emids.Services.Inventory;
 import com.emids.Services.Product;
 
 public class OnlineBookShop {
 	static Scanner scanner = new Scanner(System.in);
+
 	public static void main(String[] args) {
+		Product.addProduct();
 		Inventory inventory = new Inventory();
-		int choice;
-		do {
-			displayMenu();
-			choice = scanner.nextInt();
-			switch (choice) {
-			case 1:
-				inventory.viewBooks();
-				System.out.println();
-				break;
-			case 2:
-					new Admin().verifyAdmin();
-					adminTask();
-			case 4:
-				inventory.search();
-				System.out.println();
-				break;
-			case 5:
-				System.out.println("closing online book shop\n");
-				break;
-			default:
-				System.out.println("invalid option. please try again.\n");
-				break;
-			}
-		} while (choice != 5);
-		System.exit(0);
+		System.out.println("---WELCOME TO ONLINE BOOK SHOP---\n");
+		System.out.println("Enter 1 to login as admin\nEnter 0 as normal user");
+		int option=scanner.nextInt();
+		switch (option) {
+		case 1:
+			new Admin().verifyAdmin();
+			Admin.adminTask();
+			break;
+		case 0:
+			customerActivity();
+			break;
+		default:System.out.println("Invalid option.");
+			break;
+		}
+			
 	}
 
-	private static void adminTask() {
-		System.out.println("Enter 1 to viewBooks\nEnter 2 to add book\nEnter 3 to remove book\nEnter 4 to editBooks");
-		int choice=scanner.nextInt();
-		switch(choice)
-		{
+	public static void customerActivity() {
+		System.out.println(
+				"Enter 1 to see Available product\nEnter 2 to add to bhookShelf\nEnter 3 to add to cart\nEnter 4 to search book");
+		int userOption = scanner.nextInt();
+		switch (userOption) {
 		case 1:
-				Product.getBook(Product.listOfBooks);
-				break;
+			Product.getBook(Product.listOfBooks);
+			customerActivity();
+			break;
+		case 2:
+			BookShelf.addTo();
+			break;
+		case 3:
+
+			break;
+
+		default:
+			break;
 		}
 	}
 

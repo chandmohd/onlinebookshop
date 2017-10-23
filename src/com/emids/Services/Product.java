@@ -10,7 +10,6 @@ import com.emids.Domain.Books;
 
 public class Product {
 	static Scanner productScanner = new Scanner(System.in);
-	Product product = new Product();
 	public static List<Books> listOfBooks = new ArrayList<Books>();
 
 	public static void viewBooks() {
@@ -41,59 +40,69 @@ public class Product {
 	{
 		for(int i=0;i<listOfBooks.size();i++)
 			System.out.println(listOfBooks.get(i));
+		System.out.println();
 	}
-	public void remove(Books book)
+	public static void remove(Books book)
 	{
 		listOfBooks.remove(book);
 		System.out.println("book removed succesfully\n");
 		Product.getBook(Product.listOfBooks);
 	}
 
-	public void editBooksDetails() {
+	public static void editBooksDetails() {
 		System.out.println("please enter the book you want to edit..?");
 		String bookName = productScanner.next();
-		System.out.println("press 1 to edit book name, press 2 to edit bookAuthor name , press 3 to edit book price");
+		System.out.println("press 1 to edit book name\nPress 2 to edit bookAuthor name\nPress 3 to edit book price");
 		int choice = productScanner.nextInt();
 		Iterator<Books> iterator = listOfBooks.iterator();
 		while (iterator.hasNext()) {
-			Books book = (Books) iterator.next();
-			if (bookName.equalsIgnoreCase(book.getBookName()))
-				product.replaceBookDetails(choice, book);
+			Books book = iterator.next();
+			if (bookName.equalsIgnoreCase(book.getBookName())) {
+				Product.replaceBookDetails(choice, book);
+				break;
+			}
+				else {
+					System.out.println("mismatched!.please Enter name that present in \n");
+					Product.getBook(Product.listOfBooks);
+				}
 		}
 	}
 
-	private void editBookName(Books book) {
+	private static void editBookName(Books book) {
 		System.out.println("Please enter the book name to update.");
 		book.setBookName(productScanner.next());
 		System.out.println("book name has updated to " + book.getBookName());
+		Product.getBook(Product.listOfBooks);
 
 	}
 
-	private void editAuthorName(Books book) {
+	private static void editAuthorName(Books book) {
 		System.out.println("Please enter the Author name to update.");
 		book.setBookAuthorName(productScanner.nextLine());
 		System.out.println("Author name has been updated to " + book.getBookAuthorName());
+		Product.getBook(Product.listOfBooks);
 
 	}
 
-	private void editPrice(Books book) {
+	private static void editPrice(Books book) {
 		System.out.println("Please enter the book price to update.");
 		book.setBookPrice(productScanner.nextDouble());
 		System.out.println("Book price  has been updated to " + book.getBookPrice());
+		Product.getBook(Product.listOfBooks);
 
 	}
 
-	private void replaceBookDetails(int choice, Books book) {
+	private static void replaceBookDetails(int choice, Books book) {
 		switch (choice) {
 
 		case 1:
-			product.editBookName(book);
+			Product.editBookName(book);
 			break;
 		case 2:
-			product.editAuthorName(book);
+			Product.editAuthorName(book);
 			break;
 		case 3:
-			product.editPrice(book);
+			Product.editPrice(book);
 			break;
 		default:
 			System.out.println("invalid option!.Please try again.");
