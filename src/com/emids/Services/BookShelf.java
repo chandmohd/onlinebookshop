@@ -10,7 +10,7 @@ import com.emids.Main.OnlineBookShop;
 
 public class BookShelf {
  static Scanner scanner=new Scanner(System.in);
- static List<Books>bookLists=new ArrayList<Books>();
+ static List<Books>bookLists=new ArrayList<>();
  static Iterator<Books>iterator=Product.listOfBooks.iterator();
 	public static void addTo() {
 		System.out.println("enter book name to add ?");
@@ -22,14 +22,12 @@ public class BookShelf {
 				bookLists.add(book);
 				System.out.println("book added succesfully.");
 				displayBookShelf();
-				break;
+				return;
 			}
-			else {
-				System.out.println("book not found in bookStore.\n");
-				OnlineBookShop.customerActivity();
-				break;
+			
 			}
-		}
+			System.out.println("book not found in bookStore.\n");
+			new OnlineBookShop().customerActivity();
 		
 		
 	}

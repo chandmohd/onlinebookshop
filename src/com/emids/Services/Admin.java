@@ -6,22 +6,26 @@ import java.util.Scanner;
 import com.emids.Domain.Books;
 
 public class Admin {
-	String adminName="chand";
-	String adminPassword="emids";
+	private  String adminName="chand";
+	private  String adminPassword="emids";
 	static Scanner adminScanner=new Scanner(System.in);
-	public void verifyAdmin()
+	public boolean verifyAdmin()
 	{
+		boolean loggedIn=false;
 		System.out.println("enter the Admin name");
-		String adminName=adminScanner.next();
+		String name=adminScanner.next();
 		System.out.println("enter the Admin password");
 		String password=adminScanner.next();
-		if(adminName.equals(this.adminName)&&password.equals(this.adminPassword))
-			System.out.println("-----Hello Admin----.\n");
+		if(name.equals(this.adminName)&&password.equals(this.adminPassword))
+		{	System.out.println("-----Hello Admin----.\n");
+			loggedIn=true;
+		}
 		else
 		{
 			System.out.println("Incorrect adminName and password\n");
 			verifyAdmin();
 		}
+		return loggedIn;
 	}
 	public static void adminTask() {
 		System.out.println("Enter 1 to add book\nEnter 2 to remove book\nEnter 3 to editBooks");
@@ -61,8 +65,10 @@ public class Admin {
 				Product.remove(book);
 				break;
 			}
-			else
+			else {
 				System.out.println("mismatched!.book not found by this input.");
+				break;
+			}
 		}
 	}
 

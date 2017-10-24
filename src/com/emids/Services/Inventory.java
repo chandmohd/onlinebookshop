@@ -10,11 +10,8 @@ public class Inventory extends Product {
 	Iterator<Books> iterator = listOfBooks.iterator();
 
 	public void search() {
-		int choice;
-		System.out.println("press 1 to search book by name");
-		System.out.println("press 2 to search book by author name");
-		choice = scanner.nextInt();
-		switch (choice) {
+		System.out.println("press 1 to search book by name\nEnter 2 to search book by author name");
+		switch (scanner.nextInt()) {
 		case 1:
 			System.out.println("enter the book name");
 			searchByName(scanner.next());
@@ -31,21 +28,25 @@ public class Inventory extends Product {
 
 	public void searchByName(String bookName) {
 		while (iterator.hasNext()) {
-			if (bookName.equalsIgnoreCase(iterator.next().getBookName()))
+			if (bookName.equalsIgnoreCase(iterator.next().getBookName())) {
 				System.out.println(bookName + " is Availabe");
-			else
-				System.out.println(bookName + "is not Available");
+				return;
+			}
+				
 		}
+		System.out.println(bookName + "is not Available");
 
 	}
 
 	public void searchByAuthorName(String authorName) {
 		while (iterator.hasNext()) {
-			if (authorName.equalsIgnoreCase(iterator.next().getBookAuthorName()))
-				System.out.println("book by " + authorName + " is Availabe.");
-			else
-				System.out.println("book by " + authorName + " is not Availabe.");
+			if (authorName.equalsIgnoreCase(iterator.next().getBookAuthorName())) {
+				System.out.println("book by " + authorName + " is Available.");
+				return;
+			}
 		}
+		System.out.println("book by " + authorName + " is not Available.");
+
 	}
 
 	public static void showBookDetails(Books book) {
