@@ -1,11 +1,11 @@
-package com.emids.TestClasses;
+package com.emids.testClasses;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.emids.Services.Admin;
-import com.emids.Utility.ScannerClass;
+import com.emids.services.Admin;
+import com.emids.utility.ScannerClass;
 
 public class OnlineBookShopTest {
 	@Test

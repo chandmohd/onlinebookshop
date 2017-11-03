@@ -1,4 +1,4 @@
-package com.emids.Domain;
+package com.emids.domain;
 
 public class Books {
 	// only books items
